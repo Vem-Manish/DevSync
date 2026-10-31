@@ -16,13 +16,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Placeholder router includes (uncomment as teammates finish PRs)
+
 from routers import auth
 app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
-# app.include_router(provisioner.router, prefix="/api/provision", tags=["Provisioner"])
-# app.include_router(uploader.router, prefix="/api/uploader", tags=["Uploader"])
-# app.include_router(editor.router, prefix="/api/editor", tags=["Editor"])
-# app.include_router(resolver.router, prefix="/api/resolver", tags=["Resolver"])
 
 @app.get("/api/health")
 def health_check():
