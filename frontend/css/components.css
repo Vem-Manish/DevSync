@@ -1,0 +1,120 @@
+/* Typography Helper */
+.font-serif-royal {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Sidebar Navigation Items */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 0.68rem 1rem;
+  border-radius: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+  background: transparent;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  background: var(--bg-surface-elevated);
+  color: var(--text-main);
+  border-color: var(--border-subtle);
+  transform: translateX(2px);
+}
+
+/* Active State: Light Mode */
+.nav-item.active {
+  background: #ffffff;
+  color: #0f1e36;
+  font-weight: 600;
+  border: 1px solid rgba(194, 155, 72, 0.4);
+  box-shadow: 0 3px 12px rgba(194, 155, 72, 0.15);
+}
+
+.nav-item.active svg {
+  color: var(--royal-gold);
+}
+
+/* Active State: Dark Mode (Obsidian Black with Ambient Golden Glow) */
+[data-theme="dark"] .nav-item.active {
+  background: #090b10;
+  color: #fdfbf7;
+  border: 1px solid rgba(223, 183, 95, 0.55);
+  box-shadow:
+    0 0 18px -2px rgba(223, 183, 95, 0.28),
+    inset 0 1px 1px rgba(223, 183, 95, 0.25);
+}
+
+[data-theme="dark"] .nav-item.active svg {
+  color: #dfb75f;
+  filter: drop-shadow(0 0 6px rgba(223, 183, 95, 0.4));
+}
+
+/* Polished Cards */
+.ds-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1rem;
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+  transition: all 0.25s ease;
+}
+
+[data-theme="dark"] .ds-card {
+  background: #11141c;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.55);
+}
+
+.ds-card:hover {
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-lg);
+}
+
+[data-theme="dark"] .ds-card:hover {
+  border-color: rgba(223, 183, 95, 0.4);
+  box-shadow: 0 10px 28px -4px rgba(0, 0, 0, 0.7), 0 0 12px rgba(223, 183, 95, 0.12);
+}
+
+/* Action Buttons */
+.ds-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.55rem 1.25rem;
+  border-radius: 0.625rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.ds-btn-primary {
+  background: linear-gradient(135deg, #132238 0%, #0a1322 100%);
+  color: #fdfbf7;
+  border: 1px solid rgba(194, 155, 72, 0.4);
+  box-shadow: 0 2px 8px rgba(10, 19, 34, 0.25);
+}
+
+[data-theme="dark"] .ds-btn-primary {
+  background: linear-gradient(135deg, #161b26 0%, #0c0f17 100%);
+  color: #fcfbf7;
+  border: 1px solid rgba(223, 183, 95, 0.45);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45), 0 0 10px rgba(223, 183, 95, 0.15);
+}
+
+.ds-btn-primary:hover {
+  border-color: var(--royal-gold);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .ds-btn-primary:hover {
+  border-color: #dfb75f;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), 0 0 16px rgba(223, 183, 95, 0.28);
+}

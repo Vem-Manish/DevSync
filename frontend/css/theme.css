@@ -1,0 +1,53 @@
+:root {
+  /* Light Mode Palette */
+  --bg-primary: #fcfbf7;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f7f5ed;
+  --bg-surface-hover: #f1ede2;
+  --bg-sidebar: #fbf9f4;
+  --bg-badge: #f8f6f0;
+
+  --text-main: #141b2b;
+  --text-secondary: #576175;
+  --text-tertiary: #8f98a8;
+
+  --royal-navy: #0f1e36;
+  --royal-gold: #c29b48;
+  --royal-gold-soft: rgba(194, 155, 72, 0.14);
+  --border-subtle: rgba(20, 27, 43, 0.08);
+  --border-gold: rgba(194, 155, 72, 0.35);
+
+  --shadow-sm: 0 1px 2px rgba(15, 30, 54, 0.04);
+  --shadow-md: 0 4px 12px -2px rgba(15, 30, 54, 0.06);
+  --shadow-lg: 0 12px 24px -4px rgba(15, 30, 54, 0.08);
+}
+
+/* Dark Mode (High-Polish Obsidian with Brushed Gold Glow) */
+[data-theme="dark"] {
+  --bg-primary: #07090d;
+  --bg-surface: #0f121a;
+  --bg-surface-elevated: #151a24;
+  --bg-surface-hover: #1b212e;
+  --bg-sidebar: #0b0e14;
+  --bg-badge: #121722;
+
+  --text-main: #f5f7fa;
+  --text-secondary: #a2abbd;
+  --text-tertiary: #657085;
+
+  --royal-navy: #ffffff;
+  --royal-gold: #dfb75f;
+  --royal-gold-soft: rgba(223, 183, 95, 0.16);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-gold: rgba(223, 183, 95, 0.4);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 6px 16px -2px rgba(0, 0, 0, 0.65);
+  --shadow-lg: 0 16px 32px -4px rgba(0, 0, 0, 0.8);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
