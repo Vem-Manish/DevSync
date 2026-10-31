@@ -1,3 +1,5 @@
+import { checkAuthCallback, initiateLogin } from './modules/authView.js';
+
 // Theme Toggle Controller
 const themeToggleBtn = document.getElementById('theme-toggle');
 const sunIcon = document.getElementById('theme-icon-sun');
@@ -57,3 +59,7 @@ tabs.forEach(tab => {
 });
 
 switchTab('wizard');
+
+// Check GitHub OAuth redirect & render session
+checkAuthCallback();
+document.getElementById('btn-login')?.addEventListener('click', initiateLogin);
