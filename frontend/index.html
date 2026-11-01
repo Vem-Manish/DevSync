@@ -29,46 +29,47 @@
 
   <!-- Global App Header -->
   <header class="h-16 border-b border-[var(--border-subtle)] bg-[var(--bg-surface)]/85 backdrop-blur-md px-8 flex items-center justify-between sticky top-0 z-50 shadow-[var(--shadow-sm)] transition-colors">
-    <!-- Brand Logo & Clean Typography -->
-    <div class="flex items-center gap-3.5">
-      <div class="h-10 w-10 rounded-xl !bg-white border border-white/20 shadow-md flex items-center justify-center overflow-hidden p-1 shrink-0">
-  <img src="assets/logo.png" alt="DevSync Logo" class="w-full h-full object-contain scale-[1.3]">
-</div>git add .
-      <span class="font-serif text-2xl font-bold tracking-tight text-[var(--royal-navy)]">DevSync</span>
+    <div class="flex items-center gap-4">
+      <div id="btn-home-logo" class="flex items-center gap-3.5 cursor-pointer">
+        <div class="h-10 w-10 rounded-xl !bg-white border border-white/20 shadow-md flex items-center justify-center overflow-hidden p-1 shrink-0">
+          <img src="assets/logo.png" alt="DevSync Logo" class="w-full h-full object-contain scale-[1.3]">
+        </div>
+        <span class="font-serif text-2xl font-bold tracking-tight text-[var(--royal-navy)]">DevSync</span>
+      </div>
+
+      <!-- Breadcrumb indicator -->
+      <div id="workspace-breadcrumb" class="hidden items-center gap-2 text-xs font-mono border-l border-[var(--border-subtle)] pl-4">
+        <button id="btn-back-projects" class="text-[var(--text-tertiary)] hover:text-[var(--royal-gold)] transition-colors">Projects</button>
+        <span class="text-[var(--text-tertiary)]">/</span>
+        <span id="breadcrumb-project-name" class="font-bold text-[var(--text-main)]"></span>
+      </div>
     </div>
 
     <!-- Right Header Controls -->
-    <div class="flex items-center gap-3" id="user-session-bar">
-      <!-- Theme Toggle Button -->
+    <div class="flex items-center gap-3">
       <button id="theme-toggle" class="p-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-badge)] text-[var(--text-secondary)] hover:text-[var(--royal-gold)] hover:border-[var(--border-gold)] transition-all cursor-pointer" title="Toggle Light / Dark mode">
-        <!-- Sun Icon (shown in dark mode) -->
         <svg id="theme-icon-sun" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-        <!-- Moon Icon (shown in light mode) -->
         <svg id="theme-icon-moon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
       </button>
 
-      <div class="hidden sm:flex items-center gap-2 text-xs font-medium text-[var(--text-secondary)] bg-[var(--bg-badge)] px-3.5 py-1.5 rounded-lg border border-[var(--border-subtle)]">
-        <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        GitHub Connected
+      <div class="flex items-center gap-3" id="user-session-bar">
+        <button id="btn-login" class="ds-btn ds-btn-primary">
+          Sign in with GitHub
+        </button>
       </div>
-
-      <button id="btn-login" class="ds-btn ds-btn-primary">
-        <svg class="w-4 h-4 text-[#c29b48]" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-        Sign in with GitHub
-      </button>
     </div>
   </header>
 
-  <!-- App Workspace -->
+  <!-- Workspace Shell -->
   <div class="flex-1 flex overflow-hidden">
-    <!-- Left Navigation Bar -->
-    <aside class="w-64 border-r border-[var(--border-subtle)] bg-[var(--bg-sidebar)] flex flex-col justify-between p-4 select-none transition-colors">
+    <!-- Sidebar Navigation (Active only when a workspace is open) -->
+    <aside id="app-sidebar" class="w-64 border-r border-[var(--border-subtle)] bg-[var(--bg-sidebar)] hidden flex-col justify-between p-4 select-none transition-colors">
       <div>
         <p class="text-[11px] font-cinzel font-semibold tracking-wider text-[var(--text-tertiary)] px-3 uppercase mb-2.5">Workspace Suites</p>
         <nav class="space-y-1.5" id="nav-tabs">
-          <button data-tab="wizard" class="nav-item active">
-            <svg class="w-4 h-4 text-[var(--royal-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
-            Lead Architect
+          <button data-tab="team" class="nav-item">
+            <svg class="w-4 h-4 text-[var(--royal-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            Team & Invites
           </button>
           <button data-tab="mission" class="nav-item">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
@@ -88,16 +89,17 @@
       <!-- Active Status Box -->
       <div class="p-3.5 rounded-xl border border-[var(--border-gold)] bg-[var(--bg-surface)] shadow-[var(--shadow-sm)] text-xs transition-colors">
         <div class="flex items-center justify-between">
-          <span class="font-cinzel text-[10px] tracking-wider text-[var(--royal-gold)] font-semibold uppercase">Active Repository</span>
+          <span class="font-cinzel text-[10px] tracking-wider text-[var(--royal-gold)] font-semibold uppercase">Active Context</span>
           <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
         </div>
-        <p class="font-mono text-[var(--royal-navy)] font-semibold mt-1 truncate" id="current-repo-label">Not connected</p>
+        <p class="font-mono text-[var(--royal-navy)] font-semibold mt-1 truncate" id="current-repo-label"></p>
+        <p class="font-mono text-[10px] text-[var(--text-tertiary)] mt-0.5" id="current-role-label"></p>
       </div>
     </aside>
 
     <!-- Main Module Viewport -->
     <main class="flex-1 overflow-y-auto p-10 bg-[var(--bg-primary)] transition-colors" id="module-container">
-      <!-- Dynamic modules loaded here by app.js -->
+      <!-- Dynamically injected views -->
     </main>
   </div>
 
