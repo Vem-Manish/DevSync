@@ -20,6 +20,7 @@ app.add_middleware(
 from routers import auth
 app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
 
+
 @app.get("/api/health")
 def health_check():
     return {"status": "online", "project": "DevSync", "version": "1.0.0"}
