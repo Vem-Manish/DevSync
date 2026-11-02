@@ -412,23 +412,22 @@ document.getElementById('btn-home-logo')?.addEventListener('click', () => window
 document.getElementById('btn-back-projects')?.addEventListener('click', () => window.DevSyncApp.openDashboard());
 
 
+navButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    navigate(btn.getAttribute('data-tab'));
+  });
+});
+
+document.getElementById('btn-home-logo')?.addEventListener('click', () => window.DevSyncApp.openDashboard());
+document.getElementById('btn-back-projects')?.addEventListener('click', () => window.DevSyncApp.openDashboard());
+
 // App Initialization
 (async () => {
-  // 1. Capture token if redirected from backend OAuth callback
-  const urlParams = new URLSearchParams(window.location.search);
-  const tokenFromUrl = urlParams.get('token');
-
-  if (tokenFromUrl) {
-    localStorage.setItem('devsync_token', tokenFromUrl);
-    // Remove the query parameter from the URL bar cleanly
-    window.history.replaceState({}, document.title, window.location.pathname);
-  }
-
-  // 2. Process any remaining OAuth code callback if present
+  // 1. Process GitHub OAuth code if returning from redirect
   await checkAuthCallback();
 
-  // 3. Check for valid active session
-  const token = getStoredToken() || localStorage.getItem('devsync_token');
+  // 2. Check for active session using the official getter
+  const token = getStoredToken();
   if (token && getActiveProject()) {
     navigate('team');
   } else {
