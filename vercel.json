@@ -5,18 +5,18 @@
       "root": "frontend"
     },
     "api": {
-      "root": "backend",
-      "framework": "fastapi"
+      "root": "backend",https://github.com/Vem-Manish/DevSync/blob/main/vercel.json
+      "entrypoint": "main:app"
     }
   },
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "api"
+      "source": "/api/:path*",
+      "destination": { "service": "api" }
     },
     {
-      "src": "/(.*)",
-      "dest": "web"
+      "source": "/(.*)",
+      "destination": { "service": "web" }
     }
   ]
 }
