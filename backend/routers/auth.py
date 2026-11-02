@@ -37,39 +37,8 @@ def get_auth_config():
 
 @router.get("/callback")
 async def github_callback(code: str = Query(...)):
-    """Handles the browser GET redirect from GitHub OAuth."""
-    if not GITHUB_CLIENT_ID or not GITHUB_CLIENT_SECRET:
-        raise HTTPException(status_code=500, detail="GitHub OAuth credentials not configured.")
-
-    token_url = "https://github.com/login/oauth/access_token"
-    token_payload = {
-        "client_id": GITHUB_CLIENT_ID,
-        "client_secret": GITHUB_CLIENT_SECRET,
-        "code": code,
-        "redirect_uri": GITHUB_REDIRECT_URI,
-    }
-    headers = {"Accept": "application/json"}
-
-    async with httpx.AsyncClient(timeout=30.0) as client:
-        token_response = await client.post(token_url, json=token_payload, headers=headers)
-        if token_response.status_code != 200:
-            raise HTTPException(status_code=400, detail="Failed to exchange authorization code.")
-
-        token_data = token_response.json()
-        access_token = token_data.get("access_token")
-        if not access_token:
-            raise HTTPException(status_code=400, detail=token_data.get("error_description", "Invalid code."))
-
-        # Redirect the user back to the frontend dashboard with the token
-        response = RedirectResponse(url=f"/?token={access_token}")
-        response.set_cookie(
-            key="devsync_token",
-            value=access_token,
-            httponly=False,
-            samesite="lax",
-            secure=True
-        )
-        return response
+    """Passes authorization code back to frontend to complete session provisioning."""
+    return RedirectResponse(url=f"/?code={code}")
 
 @router.post("/token", response_model=AuthSessionResponse)
 async def exchange_token(code: str = Query(...)):
