@@ -5,7 +5,7 @@
       "root": "frontend"
     },
     "api": {
-      "root": "backend",https://github.com/Vem-Manish/DevSync/blob/main/vercel.json
+      "root": "backend",
       "entrypoint": "main:app"
     }
   },
