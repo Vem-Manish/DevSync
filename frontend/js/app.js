@@ -435,4 +435,3 @@ document.getElementById('btn-back-projects')?.addEventListener('click', () => wi
     navigate('dashboard');
   }
 })();
-})();
